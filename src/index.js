@@ -3,10 +3,26 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {makeServer} from "./api/server";
+import {BrowserRouter as Router} from "react-router-dom";
+import {PlayListProvider} from "./contexts/playlist-context"
+import {NoteProvider} from "./contexts/video-note"
 
+makeServer();
 ReactDOM.render(
   <React.StrictMode>
+ 
+  <Router>
+  <PlayListProvider>
+  <NoteProvider>
     <App />
+  </NoteProvider>
+  
+  </PlayListProvider>
+
+  </Router>
+ 
+   
   </React.StrictMode>,
   document.getElementById('root')
 );

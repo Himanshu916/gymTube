@@ -1,38 +1,373 @@
-.App {
-  text-align: center;
+*
+{
+  margin:0;
+ 
+
+}
+body
+{
+  margin-bottom:55px;
+  margin-top: 55px;
+  box-sizing: border-box;
+  background-color: #E5E7EB;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+
+.header
+{
+  display:flex;
+  align-items: center;
+  justify-content: space-between;
+  position:fixed;
+  top:0;
+  background-color: white;
+  height:55px;
+  width:100%;
+  box-sizing: border-box;
+  padding:.5rem;
+  border-bottom: .2px solid lightgray;
+  z-index: 100;
+}
+.header__left
+{
+  display: flex;
+  align-items: center;
+  
+}
+.header__input
+{
+  display: flex;
+  align-items: center;
+  width:50%;
+  border:1px solid black;
+  padding:.2rem;
+  color:grey;
+}
+.header__input>input{
+  flex:1;
+  border:none
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.bottom-bar
+{
+  display:flex;
+  align-items: center;
+  justify-content: space-between;
+  position:fixed;
+  bottom:0;
+  padding:5px;
+  width: 100%;
+  box-sizing: border-box;
+  height:55px;
+  background-color: black;
+  color:darkgray;
+  border-top:.2px solid lightgray;
+  z-index: 100;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.cards
+{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding:0 20px;
+}
+.specificplaylist
+{
+  justify-content: flex-start;
+  
+}
+.specificplaylist--card
+{
+  margin-right:1rem;
+}
+.card{
+  width:350px;
+  margin-bottom: 10px;
+  background-color:white;
+
+ 
+  
+}
+.particularVideo
+{
+  display: flex;
+  align-items: flex-start;
+}
+.particularVideo__note
+{
+  background-color: black;
+  padding:1.1rem;
+  color:darkgray;
+  width:60%;
+  height:80vh;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+
+}
+.particularVideo__note--input
+{
+  height:2rem;
+  padding: .5rem;
+  font-size: 1.5rem;
+  width:98%;
+  border:none;
+  outline: none;
+
+}
+.particularVideo__note--input::placeholder
+{
+  padding:.5rem;
+}
+.save__button
+{
+  position: absolute;
+  background-color: rgb(48, 43, 43);
+  color:darkgray;
+  font-weight: 600;
+  border:none;
+  cursor:pointer;
+  top:0px;
+  bottom:0px;
+  right:-10px;
+}
+.particularVideo__description
+{
+  position: relative;
+
+}
+
+.particularVideo__card
+{
+  width:560px;
+  margin:0px 20px;
+
+}
+.particularVideo__card--responsive
+{
+  border-radius:20px;
+
+}
+
+.responsive
+{
+  width:100%;
+  height:0;
+  padding-bottom:55.25%;
+  position: relative;
+
+}
+
+.responsive iframe
+{
+  position: absolute;
+  width:100%;
+  height: 100%;
+  left:0;
+  top:0;
+
+  
+}
+.topics
+{
+  display: flex;
+  justify-content: space-between;
+  
+  width:85%;
+  padding:1rem;
+  margin: 0 auto;
+  margin-bottom: 4rem;
+  box-shadow: 4px 4px 5px 2px lightgray;
+  
+  
+
+}
+
+.topics__topic
+{
+  display: flex;
+  justify-content: space-between;
+  padding:.5rem;
+
+
+}
+.topics__topic button{
+ background-color: red;
+ width:7rem;
+ padding:.4rem;
+ border-radius: 5px;
+ border:none;
+ margin-left:1rem;;
+ 
+}
+
+.card__description
+{
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  padding:.5rem 0;
+  background-color: black;
+ 
 }
 
-.App-link {
-  color: #61dafb;
+.card__description h3
+{
+  margin-left:4px;
+  color:darkgray;
+  text-transform: capitalize;
+  cursor: pointer;
+}
+.card__description div
+{
+  margin-right:4px;
+}
+.icons
+{
+  display: flex;
+
+}
+.icon
+{
+  cursor:pointer;
+
+
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+.playlist
+{
+  display: flex;
+  flex-direction: column;
+ 
+  
+}
+.playlistTitle
+{
+  text-align: center;
+  margin-bottom: 1rem;;
+}
+.create 
+{
+  background-color:rgba(255,255,255);
+  position:absolute;
+  bottom:40%;
+  left:30%;
+  width:40%;
+  height:30vh;
+  box-shadow: 1px 1px 10px 2px rgb(209, 213, 218);
+  display: flex;
+  flex-direction: column;
+  overflow:auto;
+
+
+  z-index: 80;
+}
+
+.playlist h2
+{
+  text-align: center;
+}
+.playlist__name
+{
+  width:60%;
+  margin:10px auto;
+  height:4vh;
+}
+.playlist__create
+{
+  width:5rem;
+  padding:.5rem;
+  background-color: white;
+  border: none;
+  border-radius: 5px;
+  align-self: center;
+  cursor:pointer
+
+}
+.playlist__button
+{
+  align-self: center;
+  
+}
+.playlist__create--secondary
+{
+  background-color: #E5E7EB;
+  border:none;
+  width:5rem;
+  padding:.5rem;
+  border-radius: 5px;
+  display: inline-block;
+  margin-right: 5px;
+  
+}
+.seePlayLists
+{
+  display: flex;
+  flex-direction: column;
+  width:60%;
+  margin:0 auto;
+  margin-top:.5rem;
+}
+.seePlayList
+{
+  list-style-type: none;
+  background-color: black;
+  padding:1.5rem;
+  margin:.5rem 0;
+
+}
+.seePlayList h2
+{
+  color:darkgray;
+  text-transform: capitalize;
+  cursor: pointer;
+}
+
+
+.seePlayListsFromVideos
+{
+  display: flex;
+  flex-direction: column;
+  width:90%;
+  margin:0 auto;
+  margin-top:.5rem;
+}
+.seePlayListFromVideo
+{
+  list-style-type: none;
+  background-color: #aeb0b4;
+  padding:1rem;
+  margin:.2rem 0;
+}
+.seePlayListFromVideo--name
+{
+  font-size:1rem;
+  position: relative;
+  top:-2px;
+  padding-left:1rem;
+}
+.seePlayListFromVideo--checkbox
+{
+  width:1rem;
+  height:1rem;
+}
+
+
+@media only screen and (max-width: 600px) {
+    .card
+    {
+      width: 560px;
+    }
+    .topics
+    {
+     
+      flex-direction: column;
+    }
+    .create{
+      width:80%;
+      left:40px;
+    }
+
 }
