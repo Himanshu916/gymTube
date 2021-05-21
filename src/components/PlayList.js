@@ -1,7 +1,7 @@
 import {useParams,Link} from "react-router-dom";
 import {useContext} from "react";
 import {PlayListContext} from "../contexts/playlist-context"
-import {getDescription} from "./VideoCard"
+// import {getDescription} from "./VideoCard"
 export default function PlayList()
 {
     const {playlistname} = useParams();
@@ -26,7 +26,7 @@ export default function PlayList()
                                 <div className="card__description">
                                     <Link style={{textDecoration:"none"}} to= {`/videos/${videoId}`}>
                                     <h3 >
-                                        {getDescription(videoId)}
+                                        {/* {getDescription(videoId)} */}
                                     </h3>
                                     </Link>
                                     {/* <div className="icons">

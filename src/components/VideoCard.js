@@ -1,45 +1,44 @@
 import BookmarkBorderIcon from '@material-ui/icons/BookmarkBorder';
 import PlaylistAddIcon from '@material-ui/icons/PlaylistAdd';
-import {BasicExercises} from "../myvideos/basicexercises"
 import {useParams} from "react-router-dom";
-import {useState,useContext} from "react"
+import {useContext,useState,useEffect} from "react"
 import {NoteContext} from "../contexts/video-note"
+import axios from "axios";
 
-
-
-export function getDescription(id)
-{
- 
-    const item =BasicExercises.find(item=>item.id === id)
-   return item.description
-    
-  
-
-}
 export default function VideoCard()
 {
-    // const [note,setNote] = useState("")
     const {note,dispatch,notes} = useContext(NoteContext);
+    const [video,setVideo] = useState()
+
     const {id} = useParams();
-    const savednotes = notes.filter(item=>item.noteid===id);
-    
- 
-    // console.log("aagaya",savednote);
+    console.log(id)
+    // getting notes for that particular video
+    const savednotes = notes.filter(item=>item.noteid===video._id);
 
-    
+    useEffect( ()=>
+    {
+       (async ()=>
+        {
+            const {data} = await axios.get("http://localhost:5000/api/videos/"+id);
 
+            setVideo(data);
+
+        })()
+       
+
+    },[id])
    
     return(
         <div className="particularVideo">
       
         <div key={id} className="card particularVideo__card">
         <div className="responsive particularVideo__card--responsive">
-        <iframe src={`https://www.youtube.com/embed/${id}`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+        <iframe src={`https://www.youtube.com/embed/${video?.id}`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
 
         </div>
         <div className="card__description">
             <h3 >
-                {getDescription(id)}
+                {video?.description}
             </h3>
             <div className="icons">
                 <div className="icon" >
@@ -54,7 +53,7 @@ export default function VideoCard()
 
         </div>
 
-                
+                 
     </div>
     <div className="particularVideo__note">
         <div  >

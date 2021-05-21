@@ -1,73 +1,43 @@
-import {useEffect,useState} from "react";
+import {useEffect} from "react";
 import axios from "axios";
 import Topics from "./Topics";
-import BookmarkBorderIcon from '@material-ui/icons/BookmarkBorder';
-import PlaylistAddIcon from '@material-ui/icons/PlaylistAdd';
-import {Link,Outlet} from "react-router-dom";
-
+import {useVideoContext} from "../contexts/video-context"
+import {Outlet} from "react-router-dom";
+import ShowVideo from "../components/ShowVideo"
 
 export default function Home()
 {
-    const [basicExercises,setBasicExercises] = useState([]);
-
- 
-    
- 
+    const {state,dispatch} = useVideoContext();
+    const {recommendedVideos} = state;
 
     useEffect(()=>
     {
         (async function()
         {
-            const {data} = await axios.get("./api/basicexercises");
-           setBasicExercises([...basicExercises,...data.basicexercises])
+            const {data} = await axios.get("http://localhost:5000/api/recommendedVideos");
+            console.log(data)
+           dispatch({type:"setRecommendedVideos",payload:data})
 
         })()
-    },[])
+    },[dispatch])
     return(
      
         <div>
             <h1>Recommended Videos</h1>
             <div className="cards">
              {
-                 basicExercises.map(item=>
+                 recommendedVideos.map(item=>
                     {
                         return (
-                             
-                                <div key={item.id} className="card">
-                                <div className="responsive">
-                                <iframe src={item.url} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
-                    
-                                </div>
-                                <div  className="card__description">
-                                    <Link style={{textDecoration:"none"}} to= {`/videos/${item.id}`}>
-                                    <h3 >
-                                        {item.description}
-                                    </h3>
-                                    </Link>
-                                    <div className="icons">
-                                        <div className="icon" >
-                                            <BookmarkBorderIcon  style={{fontSize:"2rem",color:"darkgray"}}/>
-                                        </div>
-                                      
-                                        <div  className="icon" >
-                                          <Link   to={`/createplaylist/${item.id}`}>
-                                            <PlaylistAddIcon   style={{fontSize:"2rem",color:"darkgray"}}/>
-                                            </Link>
-                                      
-                                        </div>
-
-                                    
-                                      
-                                    </div>
-                                </div>
-                                </div>
+                             <ShowVideo item={item}/>
                                
-                                ) })}
+                                ) 
+                    }
+                )
+}
             </div>
             <Outlet/>
             <Topics/>
-          
-               
         </div>
     )
 }

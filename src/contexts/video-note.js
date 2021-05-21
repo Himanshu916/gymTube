@@ -24,9 +24,8 @@ const reducer = (state,action)=>
            
             return {...state,note:action.payload};
         case "savenote" :
-          
+           //   saving note for a paricular video 
             return {...state,notes:[...state.notes,{noteid:action.payload.id,savednote:action.payload.note}],note:""}
-            // savednote:state.savednote+action.payload.note,note:""
 
         default :
         console.console.log("wrong choice");
