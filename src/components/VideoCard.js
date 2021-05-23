@@ -11,9 +11,9 @@ export default function VideoCard()
     const [video,setVideo] = useState()
 
     const {id} = useParams();
-    console.log(id)
+    
     // getting notes for that particular video
-    const savednotes = notes.filter(item=>item.noteid===video._id);
+    const savednotes = notes.filter(item=>item.noteid===id);
 
     useEffect( ()=>
     {
@@ -27,7 +27,7 @@ export default function VideoCard()
        
 
     },[id])
-   
+  
     return(
         <div className="particularVideo">
       

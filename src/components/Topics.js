@@ -3,7 +3,7 @@ export default function Topics()
 {
     return (
       <div>
-          <h2>
+          <h2 className="videoHeading">
             Topics
           </h2>
           <div className="topics">

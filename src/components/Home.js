@@ -15,7 +15,7 @@ export default function Home()
         (async function()
         {
             const {data} = await axios.get("http://localhost:5000/api/recommendedVideos");
-            console.log(data)
+          
            dispatch({type:"setRecommendedVideos",payload:data})
 
         })()
@@ -23,13 +23,17 @@ export default function Home()
     return(
      
         <div>
-            <h1>Recommended Videos</h1>
+            <h1 className="videoHeading">Recommended Videos</h1>
             <div className="cards">
              {
                  recommendedVideos.map(item=>
                     {
                         return (
-                             <ShowVideo item={item}/>
+                        
+
+                         
+                             <ShowVideo key={item._id} item={item}/>
+                            
                                
                                 ) 
                     }

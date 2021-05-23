@@ -1,14 +1,27 @@
-import {useContext} from "react"
+import {useContext,useState,useEffect} from "react"
 import {PlayListContext} from "../contexts/playlist-context"
 import {Link,useParams} from "react-router-dom"
+import axios from "axios"
 export default function CreatePlayListFromVideos()
 {
 
    const {playListName,setPlayListName} = useContext(PlayListContext)
     const {dispatch,itemsInPlayList} = useContext(PlayListContext);
     const {videoId} = useParams();
-    console.log(videoId)
+    const [video,setVideo] = useState();
+   
+    useEffect( ()=>
+    {
+       (async ()=>
+        {
+            const {data} = await axios.get("http://localhost:5000/api/videos/"+videoId);
 
+            setVideo(data);
+
+        })()
+       
+
+    },[videoId])
    
     return(
         <div className="create">
@@ -29,7 +42,7 @@ export default function CreatePlayListFromVideos()
             <input type="button" value="Done"
             className="playlist__create--secondary"/>
             </Link>
-           
+            
          
             </div>
             
@@ -40,7 +53,7 @@ export default function CreatePlayListFromVideos()
                return <li key={playlist.name} className="seePlayListFromVideo">
                         
                         <input onClick={()=>{
-                            dispatch({type:"AddToPlayList",payload:{...playlist,id:videoId}})
+                            dispatch({type:"AddToPlayList",payload:{...playlist,video:video}})
                         }} className="seePlayListFromVideo--checkbox" type="checkbox" id={playlist.name}  />
                         <label  className="seePlayListFromVideo--name"  htmlFor={playlist.name}>{` created ${playlist.name}`}</label>
                    

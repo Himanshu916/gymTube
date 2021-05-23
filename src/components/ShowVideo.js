@@ -4,9 +4,9 @@ import PlaylistAddIcon from '@material-ui/icons/PlaylistAdd';
 
 import {Link} from "react-router-dom";
 const ShowVideo = ({item}) => {
+  
      return (
-        
-                             
+                                      
         <div key={item.id} className="card">
         <div className="responsive">
         <iframe src={item.url} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
@@ -24,7 +24,7 @@ const ShowVideo = ({item}) => {
                 </div>
               
                 <div  className="icon" >
-                  <Link   to={`/createplaylist/${item.id}`}>
+                  <Link   to={`/createplaylist/${item._id}`}>
                     <PlaylistAddIcon   style={{fontSize:"2rem",color:"darkgray"}}/>
                     </Link>
               

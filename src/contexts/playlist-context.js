@@ -23,10 +23,10 @@ function reducer(state,action)
         case "AddToPlayList" :
             const newPlayLists = state.itemsInPlayList.map(item=>
                 {
-                    console.log("item",item)   //name and content
+                    
                     if(item.name === action.payload.name)
                     {
-                        return {...item,content:[...item.content,action.payload.id]}
+                        return {...item,content:[...item.content,action.payload.video]}
                     }
                     return item
                 })
@@ -34,7 +34,7 @@ function reducer(state,action)
       
             return {...state,itemsInPlayList:newPlayLists}
         case "CreatePlayList":
-            console.log(action);
+            
            
             return (
                 {...state,itemsInPlayList:[...state.itemsInPlayList,action.payload]}

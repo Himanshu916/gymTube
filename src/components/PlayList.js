@@ -7,26 +7,27 @@ export default function PlayList()
     const {playlistname} = useParams();
     const {itemsInPlayList} = useContext(PlayListContext);
     const playlist = itemsInPlayList.find(item=>item.name ===playlistname);
-    console.log(playlist);
+   
 
     return (
         <>
         <h2 className="playlistTitle">You are welcome in playlist {playlistname}</h2>
                     <div className="cards specificplaylist">
              {
-                 playlist.content.map(videoId=>
+                 playlist.content.map(video=>
                     {
+                        
                         return (
                              
-                                <div key={videoId} className="card specificplaylist--card">
+                                <div key={video.id} className="card specificplaylist--card">
                                 <div className="responsive">
-                                <iframe src={`https://www.youtube.com/embed/${videoId}`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                                <iframe src={`https://www.youtube.com/embed/${video.id}`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                     
                                 </div>
                                 <div className="card__description">
-                                    <Link style={{textDecoration:"none"}} to= {`/videos/${videoId}`}>
+                                    <Link style={{textDecoration:"none"}} to= {`/videos/${video._id}`}>
                                     <h3 >
-                                        {/* {getDescription(videoId)} */}
+                                        {video.description}
                                     </h3>
                                     </Link>
                                     {/* <div className="icons">

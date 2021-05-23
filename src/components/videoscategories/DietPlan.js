@@ -15,7 +15,7 @@ export default function DietPlan()
         (async function()
         {
             const {data} = await axios.get("http://localhost:5000/api/nutrition");
-            console.log(data)
+        
            dispatch({type:"setNutritionVideos",payload:data})
 
         })()
@@ -23,7 +23,7 @@ export default function DietPlan()
     return(
      
         <div>
-            <h1>Nutrition Videos</h1>
+            <h1 className="videoHeading">Nutrition Videos</h1>
             <div className="cards">
              {
                  nutritionVideos.map(item=>

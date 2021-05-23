@@ -5,7 +5,7 @@ export const NoteContext = createContext();
 export  function NoteProvider({children})
 {
     const [state,dispatch] = useReducer(reducer,{note:"",notes:[]})
-    // {note:"",savednote:""}
+  
    
     return(
       

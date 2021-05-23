@@ -15,7 +15,7 @@ export default function MuscleGain()
         (async function()
         {
             const {data} = await axios.get("http://localhost:5000/api/muscleGain");
-            console.log(data)
+         
            dispatch({type:"setMuscleGainVideos",payload:data})
 
         })()
@@ -23,7 +23,7 @@ export default function MuscleGain()
     return(
      
         <div>
-            <h1>Muscle gain Videos</h1>
+            <h1 className="videoHeading">Muscle gain Videos</h1>
             <div className="cards">
              {
                  muscleGainVideos.map(item=>

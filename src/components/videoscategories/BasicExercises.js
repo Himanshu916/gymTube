@@ -15,7 +15,7 @@ export default function BasicExercises()
         (async function()
         {
             const {data} = await axios.get("http://localhost:5000/api/basicExercises");
-            console.log(data)
+          
            dispatch({type:"setBasicExercises",payload:data})
 
         })()
@@ -23,7 +23,7 @@ export default function BasicExercises()
     return(
      
         <div>
-            <h1>Basic Exercise Videos</h1>
+            <h1 className="videoHeading">Basic Exercise Videos</h1>
             <div className="cards">
              {
                  basicExercises.map(item=>

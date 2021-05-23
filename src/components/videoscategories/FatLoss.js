@@ -15,7 +15,7 @@ export default function FatLoss()
         (async function()
         {
             const {data} = await axios.get("http://localhost:5000/api/fatLoss");
-            console.log(data)
+     
            dispatch({type:"setFatLossVideos",payload:data})
 
         })()
@@ -23,7 +23,7 @@ export default function FatLoss()
     return(
      
         <div>
-            <h1>Fat Loss Videos</h1>
+            <h1 className="videoHeading">Fat Loss Videos</h1>
             <div className="cards">
              {
                  fatLossVideos.map(item=>
