@@ -14,7 +14,7 @@ export default function DietPlan()
     {
         (async function()
         {
-            const {data} = await axios.get("http://localhost:5000/api/nutrition");
+            const {data} = await axios.get("https://videolibrarybackend.herokuapp.com/api/nutrition");
         
            dispatch({type:"setNutritionVideos",payload:data})
 

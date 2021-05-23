@@ -14,7 +14,7 @@ export default function CreatePlayListFromVideos()
     {
        (async ()=>
         {
-            const {data} = await axios.get("http://localhost:5000/api/videos/"+videoId);
+            const {data} = await axios.get("https://videolibrarybackend.herokuapp.com/api/videos/"+videoId);
 
             setVideo(data);
 
@@ -55,7 +55,7 @@ export default function CreatePlayListFromVideos()
                         <input onClick={()=>{
                             dispatch({type:"AddToPlayList",payload:{...playlist,video:video}})
                         }} className="seePlayListFromVideo--checkbox" type="checkbox" id={playlist.name}  />
-                        <label  className="seePlayListFromVideo--name"  htmlFor={playlist.name}>{` created ${playlist.name}`}</label>
+                        <label style={{color:"black"}}  className="seePlayListFromVideo--name"  htmlFor={playlist.name}>{` ${playlist.name}`}</label>
                    
                 </li>
             })}

@@ -19,7 +19,7 @@ export default function VideoCard()
     {
        (async ()=>
         {
-            const {data} = await axios.get("http://localhost:5000/api/videos/"+id);
+            const {data} = await axios.get("https://videolibrarybackend.herokuapp.com/api/videos/"+id);
 
             setVideo(data);
 

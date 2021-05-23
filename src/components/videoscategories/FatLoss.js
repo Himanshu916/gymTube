@@ -14,7 +14,7 @@ export default function FatLoss()
     {
         (async function()
         {
-            const {data} = await axios.get("http://localhost:5000/api/fatLoss");
+            const {data} = await axios.get("https://videolibrarybackend.herokuapp.com/api/fatLoss");
      
            dispatch({type:"setFatLossVideos",payload:data})
 

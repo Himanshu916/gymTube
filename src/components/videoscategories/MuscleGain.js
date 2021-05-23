@@ -14,7 +14,7 @@ export default function MuscleGain()
     {
         (async function()
         {
-            const {data} = await axios.get("http://localhost:5000/api/muscleGain");
+            const {data} = await axios.get("https://videolibrarybackend.herokuapp.com/api/muscleGain");
          
            dispatch({type:"setMuscleGainVideos",payload:data})
 

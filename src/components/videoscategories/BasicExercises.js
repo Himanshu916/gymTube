@@ -14,7 +14,7 @@ export default function BasicExercises()
     {
         (async function()
         {
-            const {data} = await axios.get("http://localhost:5000/api/basicExercises");
+            const {data} = await axios.get("https://videolibrarybackend.herokuapp.com/api/basicExercises");
           
            dispatch({type:"setBasicExercises",payload:data})
 

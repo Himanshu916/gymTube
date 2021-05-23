@@ -14,7 +14,7 @@ export default function Home()
     {
         (async function()
         {
-            const {data} = await axios.get("http://localhost:5000/api/recommendedVideos");
+            const {data} = await axios.get("https://videolibrarybackend.herokuapp.com/api/recommendedVideos");
           
            dispatch({type:"setRecommendedVideos",payload:data})
 
